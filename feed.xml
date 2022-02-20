@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://chandankumar.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="http://chandankumar.dev/" rel="alternate" type="text/html" /><updated>2022-02-20T19:40:08+00:00</updated><id>http://chandankumar.dev/feed.xml</id><title type="html">Chandan Kumar</title><subtitle>Engineer passionate about Digital Ecosystem.
+</subtitle><entry><title type="html">Build a LWC Component - Integrate with third party API and add in Salesforce Knowledge</title><link href="http://chandankumar.dev/blog/2022/02/15/lwc-salesforce-knowledge/" rel="alternate" type="text/html" title="Build a LWC Component - Integrate with third party API and add in Salesforce Knowledge" /><published>2022-02-15T00:00:00+00:00</published><updated>2022-02-15T00:00:00+00:00</updated><id>http://chandankumar.dev/blog/2022/02/15/lwc-salesforce-knowledge</id><content type="html" xml:base="http://chandankumar.dev/blog/2022/02/15/lwc-salesforce-knowledge/"><![CDATA[<p><a href="https://github.com/chandanrjit/productInfo-lwc-component/edit/main/README.md">Github Repo</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Build LWC components
+- Poduct API
+- Apex : To pass the knowledge attribute to get the data api
+</code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/10242233/153776078-cc6c9c8f-f7ba-4e52-9f6b-606f0f677bde.png" alt="image" /></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Github Repo]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://chandankumar.dev/images/twitter.png" /><media:content medium="image" url="http://chandankumar.dev/images/twitter.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">jenkins rollback with scripted pipeline</title><link href="http://chandankumar.dev/blog/2022/02/14/jenkins-rollback/" rel="alternate" type="text/html" title="jenkins rollback with scripted pipeline" /><published>2022-02-14T00:00:00+00:00</published><updated>2022-02-14T00:00:00+00:00</updated><id>http://chandankumar.dev/blog/2022/02/14/jenkins-rollback</id><content type="html" xml:base="http://chandankumar.dev/blog/2022/02/14/jenkins-rollback/"><![CDATA[<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+node {
+   // Check the input build no exits or not 
+    stage('Check the Valid Build Number') { // for display purposes
+     
+        def jenkins = Jenkins.getInstance()
+        def jobName = "Demo"
+        def job = jenkins.getItem(jobName)
+        def BuildNo = "${BUILD_NUMBER}"
+        println "Last successfull build: ${job.getLastSuccessfulBuild()}"
+        def allbuild = "${job.getBuilds().collect{ it.getNumber()}}"
+        if(allbuild.contains(BuildNo)){
+            println "We found the build number entered by you in the build history: ${BuildNo}"
+        } 
+        else 
+        {
+            println "No build number was found "
+            error("Build failed because of this and that..")
+
+        }
+        
+        
+    }
+
+    stage('Rollback to Dev') {
+         println "Rollback to Dev is completed"
+    }
+    
+    
+}
+
+</code></pre></div></div>
+<hr />]]></content><author><name></name></author><summary type="html"><![CDATA[```]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://chandankumar.dev/images/twitter.png" /><media:content medium="image" url="http://chandankumar.dev/images/twitter.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
